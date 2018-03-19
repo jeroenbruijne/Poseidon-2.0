@@ -8,6 +8,7 @@ class Temperatures extends CI_Controller {
     	//die('controller/temperatures');
         parent::__construct();
         $this->load->helper('url_helper');
+        $this->load->model('temperatures_model');
      }
 
 	public function index()

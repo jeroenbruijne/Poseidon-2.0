@@ -44,10 +44,12 @@
 <!-- FastClick -->
 <script src="bower_components/fastclick/lib/fastclick.js"></script>
 <!-- AdminLTE App -->
-<script src="dist/js/adminlte.min.js"></script>
+<script src="<?php echo base_url(); ?>assets/js/adminlte.min.js"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-<script src="dist/js/pages/dashboard.js"></script>
+<script src="<?php echo base_url(); ?>assets/js/pages/dashboard.js"></script>
 <!-- AdminLTE for demo purposes -->
-<script src="dist/js/demo.js"></script>
+<script src="<?php echo base_url(); ?>assets/js/demo.js"></script>
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="<?php echo base_url(); ?>assets/js/linechart.js"></script>
 </body>
 </html>

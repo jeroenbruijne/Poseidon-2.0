@@ -1,7 +1,7 @@
 <h1>Temperaturen</h1>
 
 
-<section class="col-lg-7 connectedSortable">
+<!-- <section class="col-lg-7 connectedSortable">
     <div class="nav-tabs-custom">
         <ul class="nav nav-tabs pull-right">
             <li class="active"><a href="#revenue-chart" data-toggle="tab">Area</a></li>
@@ -13,4 +13,7 @@
             <div class="chart tab-pane" id="sales-chart" style="position: relative; height: 300px;"></div>
         </div>
     </div>
-</section>
+</section> -->
+
+<div id="container" style="width:100%; height:400px;"></div>
+
