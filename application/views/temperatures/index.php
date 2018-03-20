@@ -1,6 +1,8 @@
 <h1>Temperaturen</h1>
 
-
+<!-- <?php if(isset($temperatures)): ?>
+    <p>Data found!</p>
+<?php endif; ?> -->
 <!-- <section class="col-lg-7 connectedSortable">
     <div class="nav-tabs-custom">
         <ul class="nav nav-tabs pull-right">
@@ -15,5 +17,5 @@
     </div>
 </section> -->
 
-<div id="container" style="width:100%; height:400px;"></div>
+<canvas id="myChart"></canvas>
 

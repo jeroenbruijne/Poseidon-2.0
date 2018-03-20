@@ -13,8 +13,10 @@ class Temperatures extends CI_Controller {
 
 	public function index()
 	{
+		$data['temperatures'] = $this->temperatures_model->get_temperatures();
+
 		$this->load->view('templates/header');
-		$this->load->view('temperatures/index');
+		$this->load->view('temperatures/index', $data);
 		$this->load->view('templates/footer');
 	}
 }
