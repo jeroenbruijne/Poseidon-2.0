@@ -50,6 +50,24 @@
 <!-- AdminLTE for demo purposes -->
 <script src="<?php echo base_url(); ?>assets/js/demo.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.1.4/Chart.min.js"></script>
-<script src="<?php echo base_url(); ?>assets/js/linechart.js"></script>
+<!-- <script src="<?php echo base_url(); ?>assets/js/linechart.js"></script> -->
+<script>
+var ctx = document.getElementById('myChart').getContext('2d');
+var myChart = new Chart(ctx, {
+  type: 'line',
+  data: {
+    labels: [<?php foreach($temperatures as $t) { echo $t['temperature'] . ',';} ?>],
+    datasets: [{
+      label: 'apples',
+      data: [<?php foreach($temperatures as $t) { echo $t['temperature'] . ',';} ?>],  // 12, 19, 3, 17, 6, 3, 7, 12, 19, 3, 17, 6, 3, 7, 12, 19, 3, 17, 6, 3, 7
+      backgroundColor: "rgba(153,255,51,0.4)"
+    }, {
+      label: 'oranges',
+      data: [2, 29, 5, 5, 2, 3, 10],
+      backgroundColor: "rgba(255,153,0,0.4)"
+    }]
+  }
+});
+</script>
 </body>
 </html>

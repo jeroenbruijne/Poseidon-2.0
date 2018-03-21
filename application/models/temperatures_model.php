@@ -15,4 +15,30 @@ class temperatures_model extends CI_Model{
     	return $query->result_array();
     }
 
+    function create_temperature($sensor, $datetime, $temperature)
+    {
+        $data = array(
+            'datetime' => $datetime, //TODO: Possible timezone problems when used internationally 
+            'temperature' => $temperature,
+            'name_sensor' => $sensor
+        );
+
+        $this->db->insert('temperatures', $data);
+
+        return true; // TODO: Error handling
+    }
+
+    function get_latest_temperatures()
+    {
+        //$this->db->select('id');
+        $this->db->select('temperature');
+        $this->db->select('datetime');
+        $this->db->order_by('id', 'DESC');
+        $this->db->limit(100);
+
+        $query = $this->db->get('temperatures');
+
+        return $query->result_array();
+    }
+
 }
