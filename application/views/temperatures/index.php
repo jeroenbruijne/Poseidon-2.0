@@ -9,7 +9,17 @@ if(!$user_id){
 
 <h1>Temperaturen</h1>
 
+<?php if($this->session->flashdata('success')) { ?>
+<div class="alert alert-success">
+<?php echo $this->session->flashdata('success'); ?>
+</div>
+<?php } ?>
 
+<a class="btn btn-primary" href="<?php echo base_url();?>temperatures/create"><i class="fa fa-plus" aria-hidden="true"></i>Temperatuur toevoegen</a>
+
+<!-- <?php if(isset($temperatures)): ?>
+    <p>Data found!</p>
+<?php endif; ?> -->
 <!-- <section class="col-lg-7 connectedSortable">
     <div class="nav-tabs-custom">
         <ul class="nav nav-tabs pull-right">
@@ -24,5 +34,5 @@ if(!$user_id){
     </div>
 </section> -->
 
-<div id="container" style="width:100%; height:400px;"></div>
+<canvas id="myChart"></canvas>
 
