@@ -1,4 +1,15 @@
 <!DOCTYPE html>
+
+<?php
+$user_id=$this->session->userdata('user_id');
+
+if(!$user_id){
+
+  //redirect('user/login_view');
+}
+
+ ?>
+
 <html>
 <head>
   <meta charset="utf-8">
@@ -106,7 +117,7 @@
           <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <img src="dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
-              <span class="hidden-xs">Alexander Pierce</span>
+              <span class="hidden-xs"><?php echo $this->session->userdata('user_name'); ?></span>
             </a>
             <ul class="dropdown-menu">
               <!-- User image -->
@@ -114,7 +125,7 @@
                 <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
 
                 <p>
-                  Alexander Pierce - Web Developer
+                  <?php echo $this->session->userdata('user_name'); ?> - Web Developer
                   <small>Member since Nov. 2012</small>
                 </p>
               </li>
@@ -136,7 +147,8 @@
               <!-- Menu Footer-->
               <li class="user-footer">
                 <div class="pull-right">
-                  <a href="#" class="btn btn-default btn-flat">Sign out</a>
+                 
+                  <a class="btn btn-default btn-flat" href="<?php echo base_url('user/user_logout');?>"  >  <button type="button" class="btn-primary">Logout</button></a>
                 </div>
               </li>
             </ul>
@@ -159,7 +171,7 @@
           <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
         </div>
         <div class="pull-left info">
-          <p>Alexander Pierce</p>
+          <p><?php echo $this->session->userdata('user_name'); ?> test</p>
           <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
         </div>
       </div>

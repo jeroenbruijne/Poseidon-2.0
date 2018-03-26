@@ -1,3 +1,12 @@
+<?php
+$user_id=$this->session->userdata('user_id');
+ 
+if(!$user_id){
+ 
+  //redirect('user/login_view');
+}
+?>
+
 <h1>Temperaturen</h1>
 
 
