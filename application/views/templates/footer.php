@@ -58,7 +58,7 @@ var myChart = new Chart(ctx, {
   data: {
     labels: [<?php foreach($temperatures as $t) { echo $t['temperature'] . ',';} ?>],
     datasets: [{
-      label: 'apples',
+      label: 'sensor 1',
       data: [<?php foreach($temperatures as $t) { echo $t['temperature'] . ',';} ?>],  // 12, 19, 3, 17, 6, 3, 7, 12, 19, 3, 17, 6, 3, 7, 12, 19, 3, 17, 6, 3, 7
       backgroundColor: "rgba(153,255,51,0.4)"
     }, {

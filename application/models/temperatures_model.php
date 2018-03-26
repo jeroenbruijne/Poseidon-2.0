@@ -41,4 +41,14 @@ class temperatures_model extends CI_Model{
         return $query->result_array();
     }
 
+    function insert_temperature()
+    {
+        $data = array(
+            'datetime' => $this->input->post('dateandtime'),
+            'temperature' => $this->input->post('temperature')
+        );
+
+        return $this->db->insert('temperatures', $data);
+    }
+
 }

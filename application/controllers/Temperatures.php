@@ -8,6 +8,7 @@ class Temperatures extends CI_Controller {
     	//die('controller/temperatures');
         parent::__construct();
         $this->load->helper('url_helper');
+        $this->load->library('session');
         $this->load->model('temperatures_model');
         date_default_timezone_set('Europe/Amsterdam');
      }
@@ -47,5 +48,27 @@ class Temperatures extends CI_Controller {
 		$temp = $this->temperatures_model->get_latest_temperatures();
 
 		return $temp;
+	}
+
+	public function create()
+	{
+		$this->load->helper('form');
+		$this->load->library('form_validation');
+
+		$this->form_validation->set_rules('dateandtime', 'datetime', 'required');
+		$this->form_validation->set_rules('temperature', 'temperature', 'required|greater_than_equal_to[15]|less_than_equal_to[25]');
+
+		if ($this->form_validation->run() === FALSE)
+		{
+			$this->load->view('templates/header');
+			$this->load->view('temperatures/create');
+			$this->load->view('templates/footer');
+		}
+		else
+		{
+		    $this->temperatures_model->insert_temperature();
+		    $this->session->set_flashdata('success', 'Een nieuwe temperatuur is aangemaakt!');
+		    redirect('temperatures/index', 'refresh');
+		}
 	}
 }
