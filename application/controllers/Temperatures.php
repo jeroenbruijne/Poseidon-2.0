@@ -10,11 +10,8 @@ class Temperatures extends CI_Controller {
         $this->load->helper('url_helper');
         $this->load->library('session');
         $this->load->model('temperatures_model');
-<<<<<<< HEAD
         $this->load->library('session');
-=======
         date_default_timezone_set('Europe/Amsterdam');
->>>>>>> ce85ddb8331c58c8f8cb5b03ddf1145d9a4e3022
      }
 
 	public function index()
