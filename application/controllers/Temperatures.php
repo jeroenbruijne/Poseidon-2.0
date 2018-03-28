@@ -9,14 +9,10 @@ class Temperatures extends CI_Controller {
         $this->load->library('session');
         $this->load->model('temperatures_model');
         $this->load->library('session');
-
-
         date_default_timezone_set('Europe/Amsterdam');
+    }
 
-        date_default_timezone_set('Europe/Amsterdam');
-     }
 
-     }
 	public function index()
 	{
 		$data['temperatures'] = $this->temperatures_model->get_latest_temperatures();
@@ -53,6 +49,7 @@ class Temperatures extends CI_Controller {
 		$this->load->library('form_validation');
 		$this->form_validation->set_rules('dateandtime', 'datetime', 'required');
 		$this->form_validation->set_rules('temperature', 'temperature', 'required|greater_than_equal_to[15]|less_than_equal_to[25]');
+
 		if ($this->form_validation->run() === FALSE)
 		{
 			$this->load->view('templates/header');
