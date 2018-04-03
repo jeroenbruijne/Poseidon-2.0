@@ -148,8 +148,9 @@ if(!$user_id){
 
               <li class="user-footer">
                 <div class="pull-right">
-                 
+                 <?php if ($this->session->userdata('user_id') != null): ?>
                   <a class="btn btn-default btn-flat" href="<?php echo base_url('user/user_logout');?>"  >  <button type="button" class="btn-primary">Logout</button></a>
+                  <?php endif; ?>
                 </div>
               </li>
             </ul>
@@ -172,7 +173,7 @@ if(!$user_id){
           <img src="<?php echo  base_url(); ?>dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
         </div>
         <div class="pull-left info">
-          <p><?php echo $this->session->userdata('user_name'); ?> test</p>
+          <p><?php echo $this->session->userdata('user_name'); ?></p>
           <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
         </div>
       </div>
@@ -190,7 +191,13 @@ if(!$user_id){
       <!-- sidebar menu: : style can be found in sidebar.less -->
       <ul class="sidebar-menu" data-widget="tree">
         <li class="header">MAIN NAVIGATION</li>
-        <li><a href="<?php echo base_url(); ?>temperatures"><i class="fas fa-thermometer-half"></i>Temperaturen</a></li>
+        <li><a href="<?php echo base_url(); ?>temperatures"><i class="fas fa-thermometer-half"></i> Temperaturen</a></li>
+        <?php if($this->session->userdata('user_id') == null): ?>
+          <li><a href="<?php echo base_url();?>account"><i class="fas fa-sign-in-alt"></i> Login</a></li>
+          <li><a href="<?php echo base_url();?>account/register"><i class="fas fa-user-plus"></i> Registeren</a></li>
+        <?php ; else: ?>
+          <li><a href="<?php echo base_url('user/user_logout');?>"  ><i class="fas fa-sign-out-alt"></i> Log uit</a></li>
+        <?php endif; ?>
       </ul>
     </section>
     <!-- /.sidebar -->
