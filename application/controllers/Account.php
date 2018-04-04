@@ -42,9 +42,8 @@ class Account extends CI_Controller {
         $this->session->set_userdata('user_mobile',$data['user_mobile']);
  
         //$this->load->view('temperatures/index.php');
-        $this->load->view('templates/header');
-	    $this->load->view('temperatures/index');
-	    $this->load->view('templates/footer');
+        $this->session->set_flashdata('success', 'You are logged in!');
+        redirect("home", "refresh");
 
       	}
       	else{
