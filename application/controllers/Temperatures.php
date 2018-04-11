@@ -22,21 +22,43 @@ class Temperatures extends CI_Controller {
 	}
 	public function demo_data()
 	{
-		//function create_temperature($sensor, $datetime, $temperature)
-		//$d = date('Y-m-d H:i:s');
-		$d = new Datetime();
-		//$temp = rand(150, 250) / 10;
-		$temp = 21.3;
-		$signs = array('-', '+');
-		$t = rand(1, 10) / 10;
-		
-		for($i=0; $i < 100; $i++) {
-		date_sub($d, date_interval_create_from_date_string('5 minutes')); 
-		$t = rand(1, 10) / 10;
-		$new = $temp + ($signs[rand(0,1)] . $t);
-		 $this->temperatures_model->create_temperature('sensor_1', date_format($d, 'Y-m-d H:i:s'), $new);
+		$data['sensors'] = $this->temperatures_model->get_sensors();
+
+		$this->load->helper('form');
+		$this->load->library('form_validation');
+
+		$this->form_validation->set_rules('sensor', 'name_sensor', 'required');
+
+
+		if ($this->form_validation->run() === FALSE)
+		{
+			$this->load->view('templates/header');
+			$this->load->view('temperatures/demo_data', $data);
+			$this->load->view('templates/footer');
 		}
-		die('demo');
+		else
+		{
+			//function create_temperature($sensor, $datetime, $temperature)
+			//$d = date('Y-m-d H:i:s');
+			$d = new Datetime();
+			//$temp = rand(150, 250) / 10;
+			$temp = 21.3;
+			$signs = array('-', '+');
+			$t = rand(1, 10) / 10;
+
+			$sensor = $this->input->post('sensor');
+			
+			for($i=0; $i < 100; $i++) {
+			date_sub($d, date_interval_create_from_date_string('5 minutes')); 
+			$t = rand(1, 10) / 10;
+			$new = $temp + ($signs[rand(0,1)] . $t);
+			 $this->temperatures_model->create_temperature($sensor, date_format($d, 'Y-m-d H:i:s'), $new);
+		}
+		
+		$this->session->set_flashdata('success', 'Er zijn 100 records toegevoegd!');
+		redirect('temperatures/index', 'refresh');
+		
+		}
 	}
 	public function demo_temperatures()
 	{

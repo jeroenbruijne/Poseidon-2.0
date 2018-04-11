@@ -51,4 +51,11 @@ class temperatures_model extends CI_Model{
         return $this->db->insert('temperatures', $data);
     }
 
+    function get_sensors(){
+         $this->db->select('name_sensor');
+         $query = $this->db->get('temperatures');
+
+         return $query->result_array();
+    }
+
 }
