@@ -4,10 +4,14 @@
 	margin-left: 10px;
 	width: auto;
 	display: inline;
+<<<<<<< HEAD
 }
 
 #registerform label.error {
 	margin-left: 10px;
 	width: auto;
 	display: inline;
+=======
+	color: red;
+>>>>>>> 738eba7c1cec6364fe3438db43c079e934cd47cb
 }

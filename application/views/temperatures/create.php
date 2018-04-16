@@ -10,7 +10,7 @@ echo form_open('temperatures/create', $attributes); ?>
 	<div class="form-group">
 		<label for="dateandtime" class="col-sm-2 col-form-label">Datum en tijd</label>
 		<div class="col-sm-10">
-				<input class="form-control" type="datetime-local" name="dateandtime" value="<?php echo date('m/d/y H:i'); ?>" />
+			<input class="form-control" type="timestamp" name="dateandtime" value="<?php echo date('Y-m-d H:i:s'); ?>" readonly />
 		</div>
 	</div>
 	<div class="form-group">
