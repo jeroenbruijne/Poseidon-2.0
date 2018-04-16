@@ -17,9 +17,9 @@ if(!$user_id){
 
 <a class="btn btn-primary" href="<?php echo base_url();?>temperatures/create"><i class="fa fa-plus" aria-hidden="true"></i>Temperatuur toevoegen</a>
 
-<!-- <?php if(isset($temperatures)): ?>
+<!-- <?phpifisset($temperatures)): ?>
     <p>Data found!</p>
-<?php endif; ?> -->
+<?phpendif; ?> -->
 <!-- <section class="col-lg-7 connectedSortable">
     <div class="nav-tabs-custom">
         <ul class="nav nav-tabs pull-right">

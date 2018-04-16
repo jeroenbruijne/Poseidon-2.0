@@ -9,6 +9,7 @@ class Account extends CI_Controller {
         $this->load->helper('url_helper');
         $this->load->model('account_Model');
         $this->load->library('session');
+        $this->load->helper('form');
      }
 
 	public function index()
@@ -58,30 +59,55 @@ class Account extends CI_Controller {
   		redirect('account', 'refresh');
 	}
 
-	//Haalt de ingevoerde gegevens uit de form
-	public function register_user(){
+	// Haalt de ingevoerde gegevens uit de form
+	// public function register_user(){
  
-      $user=array(
-      'user_name'=>$this->input->post('user_name'),
-      'user_email'=>$this->input->post('user_email'),
-      'user_password'=>md5($this->input->post('user_password')),
-      'user_age'=>$this->input->post('user_age'),
-      'user_mobile'=>$this->input->post('user_mobile')
-        );
-        print_r($user);
+ //      $user=array(
+ //      'user_name'=>$this->input->post('user_name'),
+ //      'user_email'=>$this->input->post('user_email'),
+ //      'user_password'=>md5($this->input->post('user_password')),
+ //      'user_age'=>$this->input->post('user_age'),
+ //      'user_mobile'=>$this->input->post('user_mobile')
+ //        );
+ //        print_r($user);
  
- 	//
-	$email_check=$this->account_Model->email_check($user['user_email']);
+ 	
+	// $email_check=$this->account_Model->email_check($user['user_email']);
  
- 	//checkt of de email al geregistreerd staat, de gebruiker krijgt een bericht of het registreren succesvol was of niet.
-	if($email_check){
-  		$this->account_Model->register_user($user);
-  		$this->session->set_flashdata('success_msg', 'Registered successfully.Now login to your account.');
- 		redirect('account');
-	}
-	else{
-  		$this->session->set_flashdata('error_msg', 'Error occured,Try again.');
-  		redirect('account/register');
-		}
- 	}
+
+	// if($email_check){
+ //  		$this->account_Model->register_user($user);
+ //  		$this->session->set_flashdata('success_msg', 'Registered successfully.Now login to your account.');
+ // 		redirect('account');
+	// }
+	// else{
+ //  		$this->session->set_flashdata('error_msg', 'Error occured,Try again.');
+ //  		redirect('account/register');
+	// 	}
+ // 	}
+
+
+  public function register_user()
+    {
+      $this->load->helper('form');
+      $this->load->library('form_validation');
+      $this->form_validation->set_rules('user_name', 'user_name', 'required');
+      $this->form_validation->set_rules('user_age', 'user_age', 'required');
+      if ($this->form_validation->run() === FALSE)
+      {
+        $this->load->view('templates/header');
+        $this->load->view('account/register');
+        $this->load->view('templates/footer');
+      }
+      else
+      {
+          $this->account_Model->register_user($user);     //insert('user', $user);
+          $this->session->set_flashdata('success', 'Een nieuwe gebruiker is aangemaakt');
+          redirect('account/login', 'refresh');
+      }
+    }
+
+
+
+
 }

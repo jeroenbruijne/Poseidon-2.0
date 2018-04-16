@@ -86,5 +86,29 @@ class User extends CI_Controller
 	}
 
 
+
+
+  // public function form(){
+  //   $this->load->helper('form');
+  //   $this->load->library('form_validation');
+  //   $this->form_validation->set_rules('name', 'name', 'required');
+  //   if ($this->form_validation->run() === FALSE)
+  //   {
+  //     $this->load->view('templates/header');
+  //     $this->load->view('account/login.php');
+  //     $this->load->view('templates/footer');
+  //     $this->session->set_flashdata('error_msg', 'Error occured,Try again.');
+  //     redirect('account/login', 'refresh');
+  //   }
+  //   else
+  //   {
+
+  //       $this->session->set_flashdata('success', 'Account geregistreerd');
+  //       redirect('account/login', 'refresh');
+  //   }
+  // }
+
+
+
 }
 ?>

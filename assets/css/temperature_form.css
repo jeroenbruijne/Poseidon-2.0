@@ -5,3 +5,9 @@
 	width: auto;
 	display: inline;
 }
+
+#registerform label.error {
+	margin-left: 10px;
+	width: auto;
+	display: inline;
+}

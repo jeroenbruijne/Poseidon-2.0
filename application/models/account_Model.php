@@ -20,6 +20,8 @@ class account_model extends CI_model{
   		}
  	}
 
+
+  //email checking
  	public function email_check($email){
  
   	$this->db->select('*');

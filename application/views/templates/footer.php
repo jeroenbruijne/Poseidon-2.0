@@ -83,7 +83,32 @@
       },
     });
   });
-  </script>
+  $(document).ready(function() {
+
+    console.log("footer.php:88");
+
+    $("#registerform").validate({
+      rules: {
+        user_name: { 
+          required: true,
+          min: 10
+        },
+        user_age: {
+          number: true,
+          required: true
+        },
+      },
+      messages: {
+        user_name: "Please enter a username",
+        user_age: "please enter your age"
+      },
+    });
+  });
+
+      console.log("footer.php:108");
+
+</script>
+
 <script>
 var ctx = document.getElementById('myChart').getContext('2d');
 var myChart = new Chart(ctx, {
@@ -104,3 +129,6 @@ var myChart = new Chart(ctx, {
 </script>
 </body>
 </html>
+<script>
+      console.log("footer.php:133");
+</script>
